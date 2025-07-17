@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { ClimaService } from '../../services/clima.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HistorialComponent } from '../historial/historial.component';
 import { Historial } from '../../models/historial';
 
 @Component({
   selector: 'app-clima',
-  imports: [FormsModule,CommonModule, HistorialComponent],
+  imports: [FormsModule,CommonModule],
   templateUrl: './clima.component.html',
   styleUrl: './clima.component.css'
 })
@@ -18,6 +17,7 @@ export class ClimaComponent {
   nuevoHistorial: Historial = {
     ciudad: ''
   };
+  historial: Historial[] = [];
 
   constructor(public climaService: ClimaService){}
 
@@ -36,8 +36,17 @@ export class ClimaComponent {
     })
   };
 
+  ngOnInit(): void {
+    this.cargarHistorial();
+  }
+
+  cargarHistorial(){
+    this.climaService.getHistory().subscribe(data => this.historial = data);
+  }
+
   agregarHistorial(){
 +    this.climaService.createHistory(this.nuevoHistorial).subscribe(() => {
+      this.cargarHistorial();
       this.nuevoHistorial = {ciudad: ''}
     });
   }

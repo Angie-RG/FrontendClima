@@ -13,13 +13,8 @@ export class HistorialService {
 
   constructor(private http: HttpClient) { }
 
-  getHistory(): Observable<Historial[]> {
-    return this.http.get<Historial[]>(`${this.apiUrl}all`);
-  }
-
-  // createHistory(historial: Historial): Observable<Historial> {
-  //   console.log(historial);
-  //   return this.http.post<Historial>(`${this.apiUrl}add`, historial);
+  // getHistory(): Observable<Historial[]> {
+  //   return this.http.get<Historial[]>(`${this.apiUrl}all`);
   // }
 
 }

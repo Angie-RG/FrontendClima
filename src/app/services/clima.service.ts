@@ -26,6 +26,6 @@ export class ClimaService {
   }
 
   getHistory(): Observable<Historial[]> {
-    return this.http.get<Historial[]>(`${this.apiUrl}all`);
+    return this.http.get<Historial[]>(`${this.apiRes}all`);
   }
 }
