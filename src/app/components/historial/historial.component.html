@@ -1,0 +1,12 @@
+<div class="text-center">
+    <h3>Historial de busqueda</h3>
+    <ul class="border-b-blue-700 rounded-4xl">
+       @for (historial of historial; track historial.id) {
+        <li>{{historial.ciudad}}</li>
+       }
+    </ul>
+    <!-- <p>nombre de la ciudad: {{nombreCiudad}}</p>
+    <form (ngSubmit)="agregarHistorial()">
+        <button type="submit" class="bg-amber-600">Agregar</button>
+    </form> -->
+</div>
